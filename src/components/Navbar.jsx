@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useDarkMode } from '../hooks/useDarkMode.js';
 
 const Navbar = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  
+  const [blight, setBlight] = useDarkMode([blight, setBlight])
+  console.log(setBlight)
   const toggleMode = e => {
     e.preventDefault();
-    setDarkMode(!darkMode);
+    setBlight(!blight);
   };
   return (
     <nav className="navbar">
@@ -12,11 +15,12 @@ const Navbar = () => {
       <div className="dark-mode__toggle">
         <div
           onClick={toggleMode}
-          className={darkMode ? 'toggle toggled' : 'toggle'}
+          className={blight ? 'toggle toggled' : 'toggle'}
         />
       </div>
     </nav>
   );
 };
+
 
 export default Navbar;
